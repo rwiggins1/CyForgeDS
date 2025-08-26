@@ -10,9 +10,19 @@ class LLNode {
 	public:
 		LLNode(const T& value): data(value), next(nullptr){}
 
-		T getData() const {return data;}
-		LLNode* getNext() const {return next;}
+		T getData() const {
+			return data;
+		}
+		
+		LLNode* getNext() const {
+		return next;
+		}
 
-		void setData(T value) {data = value;}
-		void setNext(LLNode* node) {next = node;} 
+		void setData(T value) {
+		data = value;
+		}
+		
+		void setNext(LLNode* node) {
+		next = node;
+		} 
 };
