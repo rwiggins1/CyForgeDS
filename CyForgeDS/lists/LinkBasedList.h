@@ -83,6 +83,16 @@ public:
 		element_num--;
 	}
 
+	T get(int index){
+		LLNode<T>* node = front;
+		
+		for(int i = 0; i < index; i++) {
+			node = node->getNext();
+		}
+
+		return node->getData();
+	}
+
 	int size() const {
 		return element_num;
 	}

@@ -21,6 +21,9 @@ int main(){
 	assert(LinkBList.size() == 2);
 	assert(LinkBList.getFront()->getData() == 24);
 	assert(LinkBList.getRear()->getData() == 90);
+
+	//test get
+	assert(LinkBList.get(1) == 90);
 	
 	return 0;
 }
