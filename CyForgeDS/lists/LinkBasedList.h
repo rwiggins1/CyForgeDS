@@ -1,8 +1,11 @@
 #pragma once
 
+#include <stdexcept>
+#include <string>
+#include "CyForgeDS/base/LLNode.h"
 
 template <typename T>
-#include "CyForgeDS/base/LLNode.h"
+
 
 class LinkBasedList {
 private:
@@ -13,28 +16,62 @@ private:
 public:
 	LinkBasedList() : element_num(0), front(nullptr), rear(nullptr) {}
 
-	int size() const{
+	void add(int index, T element){
+		if (index < 0 || index > element_num) {
+			throw std::out_of_range("Index " + std::to_string(index) + 
+				       " is out of bounds for list of size " + 
+				       std::to_string(element_num));
+		}
+
+		LLNode<T>* newNode = new LLNode<T>(element);
+
+		if (index == 0) {
+			if (front == nullptr) {
+				front = newNode; rear = newNode;
+			} 
+			else {
+				newNode->setNext(front);
+				front = newNode;
+			}
+		}
+		else if (index == element_num) {
+			rear->setNext(newNode);
+			rear = newNode;
+		}
+		else {
+			LLNode<T>* node = front;
+			for(int i = 0; i < (index - 1); i++){
+				node = node->getNext();
+			}
+			newNode->setNext(node->getNext());
+			node->setNext(newNode);
+		}
+		element_num++;
+
+	}
+
+	int size() const {
 		return element_num;
 	}
 
-	bool isEmpty(){
+	bool isEmpty() {
 		return element_num == 0;
 	}
 
-	LLNode<T>* getFront() const{
+	LLNode<T>* getFront() const {
 		return front;
 	}
 
-	LLNode<T>* getRear() const{
+	LLNode<T>* getRear() const {
 		return rear;
 	}
 
-	~LinkBasedList(){
+	~LinkBasedList() {
 		clear();
 	}
 private:
 	void clear(){
-		while(front){
+		while(front) {
 			LLNode<T>* toDelete = front;
 			front = front->getNext();
 			delete toDelete;
