@@ -109,6 +109,19 @@ public:
 		throw std::out_of_range("Element not found in list");
 	}
 
+	bool contains(T element) {
+		LLNode<T>* node = front;
+
+		while(node) {
+			if (node->getData() == element){
+				return true;
+			}
+
+			node = node->getNext();
+		}
+		return false;
+	}
+
 	int size() const {
 		return element_num;
 	}

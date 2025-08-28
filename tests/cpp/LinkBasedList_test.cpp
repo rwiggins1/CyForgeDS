@@ -27,6 +27,10 @@ int main(){
 
 	//indexOf
 	assert(LinkBList.indexOf(90) == 1);
+
+	//contains
+	assert(LinkBList.contains(90) == true);
+	assert(LinkBList.contains(8384) == false);
 	
 	return 0;
 }
