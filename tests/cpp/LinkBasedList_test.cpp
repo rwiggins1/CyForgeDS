@@ -3,6 +3,9 @@
 #include "CyForgeDS/lists/LinkBasedList.h"
 
 int main(){
-	LinkBasedList<int> list;
+	LinkBasedList<int> LinkBList;
+
+	assert(LinkBList.isEmpty() == true);
+	
 	return 0;
 }

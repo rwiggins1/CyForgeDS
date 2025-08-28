@@ -12,7 +12,23 @@ private:
 
 public:
 	LinkBasedList() : element_num(0), front(nullptr), rear(nullptr) {}
-	
+
+	int size() const{
+		return element_num;
+	}
+
+	bool isEmpty(){
+		return element_num == 0;
+	}
+
+	LLNode<T>* getFront() const{
+		return front;
+	}
+
+	LLNode<T>* getRear() const{
+		return rear;
+	}
+
 	~LinkBasedList(){
 		clear();
 	}
