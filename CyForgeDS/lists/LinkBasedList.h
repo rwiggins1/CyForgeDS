@@ -50,6 +50,39 @@ public:
 
 	}
 
+	void remove(int index){
+		if (index < 0 || index > element_num) {
+			throw std::out_of_range("Index " + std::to_string(index) + 
+				       " is out of bounds for list of size " + 
+				       std::to_string(element_num));
+		}
+
+		if(index == 0) {
+			if(front != nullptr) {
+				LLNode<T>* node = front;
+				front = front->getNext();
+				node->setNext(nullptr);
+				delete node;
+			}
+		}
+		else {
+			LLNode<T>* prevNode = front;
+
+			for(int i = 0; i < index-1; i++) {
+				prevNode = prevNode->getNext();
+			}
+			
+			LLNode<T>* currNode = prevNode->getNext();
+			LLNode<T>* nextNode = currNode->getNext();
+
+			currNode->setNext(nullptr);
+			prevNode->setNext(nextNode);
+
+			delete currNode;
+		}
+		element_num--;
+	}
+
 	int size() const {
 		return element_num;
 	}

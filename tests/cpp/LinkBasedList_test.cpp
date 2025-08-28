@@ -12,6 +12,15 @@ int main(){
 	LinkBList.add(1, 24);
 	assert(LinkBList.getRear()->getData() == 24);
 	assert(LinkBList.size() == 2);
+	LinkBList.remove(0);
+	
+	// test remove
+	LinkBList.add(1, 45);
+	LinkBList.add(2, 90);
+	LinkBList.remove(1);
+	assert(LinkBList.size() == 2);
+	assert(LinkBList.getFront()->getData() == 24);
+	assert(LinkBList.getRear()->getData() == 90);
 	
 	return 0;
 }
