@@ -24,6 +24,9 @@ int main(){
 
 	//test get
 	assert(LinkBList.get(1) == 90);
+
+	//indexOf
+	assert(LinkBList.indexOf(90) == 1);
 	
 	return 0;
 }

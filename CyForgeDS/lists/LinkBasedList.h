@@ -93,6 +93,22 @@ public:
 		return node->getData();
 	}
 
+	int indexOf(T element) {
+		LLNode<T>* node = front;
+		
+		int index = 0;
+
+		while(node) {
+			if (node->getData() == element){
+				return index;
+			}
+			node = node->getNext();
+			index++;
+		}
+
+		throw std::out_of_range("Element not found in list");
+	}
+
 	int size() const {
 		return element_num;
 	}
