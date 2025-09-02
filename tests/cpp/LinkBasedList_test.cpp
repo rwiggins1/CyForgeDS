@@ -31,6 +31,9 @@ int main(){
 	//contains
 	assert(LinkBList.contains(90) == true);
 	assert(LinkBList.contains(8384) == false);
+
+	//set
+	assert(LinkBList.set(1, 8384) == 8384);
 	
 	return 0;
 }

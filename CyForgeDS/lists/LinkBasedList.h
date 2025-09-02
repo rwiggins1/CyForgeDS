@@ -16,6 +16,34 @@ private:
 public:
 	LinkBasedList() : element_num(0), front(nullptr), rear(nullptr) {}
 
+	T set(int index, T element) {
+		if (index < 0 || index > element_num) {
+			throw std::out_of_range("Index " + std::to_string(index) + 
+				       " is out of bounds for list of size " + 
+				       std::to_string(element_num));
+		}
+
+		if (index == 0) {
+			front->setData(element);
+			return front->getData();
+		}
+		else if (index == element_num-1) {
+			front->setData(element);
+			return front->getData();
+		}
+		else {
+			LLNode<T>* node = new LLNode<T>(element);
+
+			for(int i = 0; i < (index); i++){
+				node = node->getNext();
+			}
+
+			node->setData(element);
+			return node->getData();
+					
+		}
+	}
+
 	void add(int index, T element){
 		if (index < 0 || index > element_num) {
 			throw std::out_of_range("Index " + std::to_string(index) + 
