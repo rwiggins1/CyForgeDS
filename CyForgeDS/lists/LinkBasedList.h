@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdint>
 #include <stdexcept>
 #include <string>
 #include "CyForgeDS/base/LLNode.h"
@@ -9,7 +10,7 @@ template <typename T>
 
 class LinkBasedList {
 private:
-	int element_num;
+	std::uint32_t element_num;
 	LLNode<T>* front;
 	LLNode<T>* rear;
 
