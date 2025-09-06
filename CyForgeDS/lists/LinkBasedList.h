@@ -1,6 +1,8 @@
 #pragma once
 
+#include <cstddef>
 #include <cstdint>
+#include <iterator>
 #include <stdexcept>
 #include <string>
 #include "CyForgeDS/base/LLNode.h"
@@ -10,14 +12,14 @@ template <typename T>
 
 class LinkBasedList {
 private:
-	std::uint32_t element_num;
+	std::size_t element_num;
 	LLNode<T>* front;
 	LLNode<T>* rear;
 
 public:
 	LinkBasedList() : element_num(0), front(nullptr), rear(nullptr) {}
 
-	T set(int index, T element) {
+	T set(std::size_t index, const T& element) {
 		if (index < 0 || index > element_num) {
 			throw std::out_of_range("Index " + std::to_string(index) + 
 				       " is out of bounds for list of size " + 
@@ -45,7 +47,7 @@ public:
 		}
 	}
 
-	void add(int index, T element){
+	void add(std::size_t index, const T& element){
 		if (index < 0 || index > element_num) {
 			throw std::out_of_range("Index " + std::to_string(index) + 
 				       " is out of bounds for list of size " + 
@@ -79,7 +81,7 @@ public:
 
 	}
 
-	void remove(int index){
+	void remove(std::size_t index){
 		if (index < 0 || index > element_num) {
 			throw std::out_of_range("Index " + std::to_string(index) + 
 				       " is out of bounds for list of size " + 
@@ -112,7 +114,7 @@ public:
 		element_num--;
 	}
 
-	T get(int index){
+	T get(std::size_t index){
 		LLNode<T>* node = front;
 		
 		for(int i = 0; i < index; i++) {
@@ -122,7 +124,7 @@ public:
 		return node->getData();
 	}
 
-	int indexOf(T element) {
+	int indexOf(const T& element) {
 		LLNode<T>* node = front;
 		
 		int index = 0;
@@ -138,7 +140,7 @@ public:
 		throw std::out_of_range("Element not found in list");
 	}
 
-	bool contains(T element) {
+	bool contains(const T& element) {
 		LLNode<T>* node = front;
 
 		while(node) {
