@@ -12,14 +12,14 @@ template <typename T>
 
 class LinkBasedList {
 private:
-	std::size_t element_num;
+	size_t element_num;
 	LLNode<T>* front;
 	LLNode<T>* rear;
 
 public:
 	LinkBasedList() : element_num(0), front(nullptr), rear(nullptr) {}
 
-	T set(std::size_t index, const T& element) {
+	T set(size_t index, const T& element) {
 		if (index < 0 || index > element_num) {
 			throw std::out_of_range("Index " + std::to_string(index) + 
 				       " is out of bounds for list of size " + 
@@ -37,7 +37,7 @@ public:
 		else {
 			LLNode<T>* node = new LLNode<T>(element);
 
-			for(int i = 0; i < (index); i++){
+			for(size_t i = 0; i < (index); i++){
 				node = node->getNext();
 			}
 
@@ -47,7 +47,7 @@ public:
 		}
 	}
 
-	void add(std::size_t index, const T& element){
+	void add(size_t index, const T& element){
 		if (index < 0 || index > element_num) {
 			throw std::out_of_range("Index " + std::to_string(index) + 
 				       " is out of bounds for list of size " + 
@@ -71,7 +71,7 @@ public:
 		}
 		else {
 			LLNode<T>* node = front;
-			for(int i = 0; i < (index - 1); i++){
+			for(size_t i = 0; i < (index - 1); i++){
 				node = node->getNext();
 			}
 			newNode->setNext(node->getNext());
@@ -81,7 +81,7 @@ public:
 
 	}
 
-	void remove(std::size_t index){
+	void remove(size_t index){
 		if (index < 0 || index > element_num) {
 			throw std::out_of_range("Index " + std::to_string(index) + 
 				       " is out of bounds for list of size " + 
@@ -99,7 +99,7 @@ public:
 		else {
 			LLNode<T>* prevNode = front;
 
-			for(int i = 0; i < index-1; i++) {
+			for(size_t i = 0; i < index-1; i++) {
 				prevNode = prevNode->getNext();
 			}
 			
@@ -114,20 +114,20 @@ public:
 		element_num--;
 	}
 
-	T get(std::size_t index){
+	T get(size_t index){
 		LLNode<T>* node = front;
 		
-		for(int i = 0; i < index; i++) {
+		for(size_t i = 0; i < index; i++) {
 			node = node->getNext();
 		}
 
 		return node->getData();
 	}
 
-	int indexOf(const T& element) {
+	size_t indexOf(const T& element) {
 		LLNode<T>* node = front;
 		
-		int index = 0;
+		size_t index = 0;
 
 		while(node) {
 			if (node->getData() == element){
@@ -153,7 +153,7 @@ public:
 		return false;
 	}
 
-	int size() const {
+	size_t size() const {
 		return element_num;
 	}
 
