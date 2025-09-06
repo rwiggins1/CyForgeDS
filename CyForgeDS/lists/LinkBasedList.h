@@ -82,7 +82,7 @@ public:
 	}
 
 	void remove(size_t index){
-		if (index < 0 || index > element_num) {
+		if (index < 0 || index >= element_num) {
 			throw std::out_of_range("Index " + std::to_string(index) + 
 				       " is out of bounds for list of size " + 
 				       std::to_string(element_num));
