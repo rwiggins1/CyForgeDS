@@ -1,4 +1,7 @@
+#include <array>
 #include <cassert>
+#include <map>
+#include <string>
 #include "CyForgeDS/base/LLNode.h"
 #include "CyForgeDS/lists/LinkBasedList.h"
 
@@ -34,6 +37,15 @@ int main(){
 
 	//set
 	assert(LinkBList.set(1, 8384) == 8384);
+
+	//test array
+	LinkBasedList<std::array<std::map<int, std::string>, 10>> mapArrayLink;
+	std::array<std::map<int, std::string>, 10> mapArr;
+	mapArrayLink.add(0, mapArr);
+
+	LinkBasedList<std::array<int,  3>> arrayLink;
+	std::array<int, 3> arr = {1,2,3};
+	arrayLink.add(0, arr);
 	
 	return 0;
 }
