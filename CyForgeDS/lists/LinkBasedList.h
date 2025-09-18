@@ -18,6 +18,7 @@ private:
 
 public:
 	LinkBasedList() : element_num(0), front(nullptr), rear(nullptr) {}
+	~LinkBasedList() { clear(); }
 
 	T set(size_t index, const T& element) {
 		if (index < 0 || index >= element_num) {
@@ -35,7 +36,7 @@ public:
 			return front->getData();
 		}
 		else {
-			LLNode<T>* node = new LLNode<T>(element);
+			LLNode<T>* node = getFront();
 
 			for(size_t i = 0; i < (index); i++){
 				node = node->getNext();
@@ -173,9 +174,6 @@ public:
 		return rear;
 	}
 
-	~LinkBasedList() {
-		clear();
-	}
 private:
 	void clear(){
 		while(front) {
