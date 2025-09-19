@@ -5,7 +5,7 @@
 #include <iterator>
 #include <stdexcept>
 #include <string>
-#include "CyForgeDS/base/LLNode.h"
+#include "../base/LLNode.h"
 
 template <typename T>
 
