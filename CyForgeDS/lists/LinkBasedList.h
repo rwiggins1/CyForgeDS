@@ -7,9 +7,9 @@
 #include <string>
 #include "../base/LLNode.h"
 
+namespace cyforge {
+
 template <typename T>
-
-
 class LinkBasedList {
 private:
 	size_t element_num;
@@ -185,3 +185,4 @@ private:
 		element_num = 0;
 	}
 };
+}

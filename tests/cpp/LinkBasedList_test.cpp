@@ -5,6 +5,8 @@
 #include "CyForgeDS/base/LLNode.h"
 #include "CyForgeDS/lists/LinkBasedList.h"
 
+using namespace cyforge;
+
 int main(){
 	LinkBasedList<int> LinkBList;
 

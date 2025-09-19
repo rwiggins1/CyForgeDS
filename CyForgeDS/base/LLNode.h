@@ -1,8 +1,8 @@
 #pragma once
 
+namespace cyforge {
 
 template <typename T>
-
 class LLNode {
 	private:
 		T data;
@@ -26,3 +26,4 @@ class LLNode {
 		next = node;
 		} 
 };
+}
