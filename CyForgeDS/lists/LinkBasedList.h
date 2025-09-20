@@ -32,8 +32,8 @@ public:
 			return front->getData();
 		}
 		else if (index == element_num-1) {
-			front->setData(element);
-			return front->getData();
+			rear->setData(element);
+			return rear->getData();
 		}
 		else {
 			LLNode<T>* node = getFront();
