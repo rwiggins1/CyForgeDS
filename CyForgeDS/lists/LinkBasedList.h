@@ -18,6 +18,22 @@ private:
 
 public:
 	LinkBasedList() : element_num(0), front(nullptr), rear(nullptr) {}
+
+	LinkBasedList(const LinkBasedList<T>& sourceList):
+		element_num(0),
+		front(nullptr),
+		rear(nullptr) {
+
+		if (sourceList.isEmpty()) { return; }
+
+		LLNode<T>* sourceNode = sourceList.getFront();
+		
+		while(sourceNode != nullptr) {
+			add(element_num, sourceNode->getData());
+			sourceNode = sourceNode->getNext();
+		}
+	}
+
 	~LinkBasedList() { clear(); }
 
 	T set(size_t index, const T& element) {
@@ -129,7 +145,7 @@ public:
 		element_num--;
 	}
 
-	T get(size_t index){
+	T get(size_t index) const {
 		LLNode<T>* node = front;
 		
 		for(size_t i = 0; i < index; i++) {
@@ -139,7 +155,7 @@ public:
 		return node->getData();
 	}
 
-	size_t indexOf(const T& element) {
+	size_t indexOf(const T& element) const {
 		LLNode<T>* node = front;
 		
 		size_t index = 0;
@@ -155,7 +171,7 @@ public:
 		throw std::out_of_range("Element not found in list");
 	}
 
-	bool contains(const T& element) {
+	bool contains(const T& element) const {
 		LLNode<T>* node = front;
 
 		while(node) {
@@ -172,7 +188,7 @@ public:
 		return element_num;
 	}
 
-	bool isEmpty() {
+	bool isEmpty() const {
 		return element_num == 0;
 	}
 

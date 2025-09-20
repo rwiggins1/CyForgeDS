@@ -4,6 +4,7 @@
 #include <string>
 #include "CyForgeDS/base/LLNode.h"
 #include "CyForgeDS/lists/LinkBasedList.h"
+#include <iostream>
 
 using namespace cyforge;
 
@@ -48,6 +49,16 @@ int main(){
 	LinkBasedList<std::array<int,  3>> arrayLink;
 	std::array<int, 3> arr = {1,2,3};
 	arrayLink.add(0, arr);
+
+	// test copy constructor
+	LinkBasedList<int> Lbl;
+	Lbl.add(0, 3);
+	Lbl.add(1, 5);
+
+	LinkBasedList<int> Lbl2 = Lbl;
+	assert(Lbl2.getFront()->getData() == Lbl.getFront()->getData());
+	assert(Lbl2.getRear()->getData() == Lbl.getRear()->getData());
+
 	
 	return 0;
 }
