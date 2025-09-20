@@ -94,12 +94,17 @@ public:
 		}
 
 		if(index == 0) {
-			if(front != nullptr) {
-				LLNode<T>* node = front;
-				front = front->getNext();
+			LLNode<T>* node = front;
+			front = front->getNext();
+			
+			if (element_num == 1) {
+				rear = nullptr;
+			} 
+			else {
 				node->setNext(nullptr);
-				delete node;
 			}
+
+			delete node;
 		}
 		else {
 			LLNode<T>* prevNode = front;
@@ -110,8 +115,13 @@ public:
 			
 			LLNode<T>* currNode = prevNode->getNext();
 			LLNode<T>* nextNode = currNode->getNext();
-
-			currNode->setNext(nullptr);
+			
+			if (index == element_num-1) {
+				rear = prevNode;
+			}
+			else {
+				currNode->setNext(nullptr);
+			}
 			prevNode->setNext(nextNode);
 
 			delete currNode;
