@@ -58,7 +58,12 @@ int main(){
 	LinkBasedList<int> Lbl2 = Lbl;
 	assert(Lbl2.getFront()->getData() == Lbl.getFront()->getData());
 	assert(Lbl2.getRear()->getData() == Lbl.getRear()->getData());
-
+	
+	// test copy asignment operator
+	Lbl.add(2 , 32);
+	assert(Lbl2.getRear()->getData() != Lbl.getRear()->getData());
+	Lbl = Lbl2;
+	assert(Lbl2.getRear()->getData() == Lbl.getRear()->getData());
 	
 	return 0;
 }

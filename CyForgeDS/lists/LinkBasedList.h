@@ -34,6 +34,25 @@ public:
 		}
 	}
 
+	LinkBasedList& operator=(const LinkBasedList<T>& sourceList) {
+		if (this == &sourceList) {
+			return *this;
+		}
+		
+		clear();
+
+		if (sourceList.isEmpty()) { return *this; }
+		
+		LLNode<T>* sourceNode = sourceList.getFront();
+		
+		while(sourceNode != nullptr) {
+			add(element_num, sourceNode->getData());
+			sourceNode = sourceNode->getNext();
+		}
+
+		return *this;
+	}
+
 	~LinkBasedList() { clear(); }
 
 	T set(size_t index, const T& element) {
