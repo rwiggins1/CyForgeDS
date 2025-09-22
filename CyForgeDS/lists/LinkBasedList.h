@@ -17,6 +17,31 @@ private:
 	LLNode<T>* rear;
 
 public:
+	class Iterator {
+	private:
+		LLNode<T>* current;
+	public:
+		Iterator(LLNode<T>* node) : current(node) {}
+
+		Iterator& operator++() {
+			current = current->getNext();
+			return *this;
+		}
+		Iterator& operator++(int) {
+			Iterator iterator = *this;
+			current = current->getNext();
+			return iterator;
+		}
+	};
+
+	Iterator begin() {
+		return Iterator(front);
+	}
+
+	Iterator end() {
+		return Iterator(rear);
+	}
+
 	LinkBasedList() : element_num(0), front(nullptr), rear(nullptr) {}
 
 	LinkBasedList(const LinkBasedList<T>& sourceList):
