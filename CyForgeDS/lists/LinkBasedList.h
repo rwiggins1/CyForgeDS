@@ -27,11 +27,21 @@ public:
 			current = current->getNext();
 			return *this;
 		}
-		Iterator& operator++(int) {
+		Iterator operator++(int) {
 			Iterator iterator = *this;
 			current = current->getNext();
 			return iterator;
 		}
+		bool operator==(const Iterator& other) const { return current == other.current; }
+		bool operator!=(const Iterator& other) const { return current != other.current; }
+
+		T& operator*() {
+			if (!current) {
+				throw std::runtime_error("Cannot dereference end iterator");
+			}
+			return current->getData(); 
+		} 
+		T* operator->() { return &(current->getData()); }
 	};
 
 	Iterator begin() {
@@ -39,7 +49,7 @@ public:
 	}
 
 	Iterator end() {
-		return Iterator(rear);
+		return Iterator(nullptr);
 	}
 
 	LinkBasedList() : element_num(0), front(nullptr), rear(nullptr) {}

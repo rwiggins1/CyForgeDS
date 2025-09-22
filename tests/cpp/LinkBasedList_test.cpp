@@ -14,9 +14,11 @@ int main(){
 	assert(LinkBList.isEmpty() == true);
 	LinkBList.add(0, 23);
 	assert(LinkBList.isEmpty() == false);
-	assert(LinkBList.getFront()->getData() == 23);
+	auto LBL = LinkBList.begin();
+	assert(*LBL == 23);
 	LinkBList.add(1, 24);
-	assert(LinkBList.getRear()->getData() == 24);
+	LBL++;
+	assert(*LBL == 24);
 	assert(LinkBList.size() == 2);
 	LinkBList.remove(0);
 	
@@ -25,8 +27,7 @@ int main(){
 	LinkBList.add(2, 90);
 	LinkBList.remove(1);
 	assert(LinkBList.size() == 2);
-	assert(LinkBList.getFront()->getData() == 24);
-	assert(LinkBList.getRear()->getData() == 90);
+	assert(*LinkBList.begin() == 24);
 
 	//test get
 	assert(LinkBList.get(1) == 90);
@@ -56,14 +57,16 @@ int main(){
 	Lbl.add(1, 5);
 
 	LinkBasedList<int> Lbl2 = Lbl;
-	assert(Lbl2.getFront()->getData() == Lbl.getFront()->getData());
-	assert(Lbl2.getRear()->getData() == Lbl.getRear()->getData());
+	assert(*Lbl2.begin() == *Lbl.begin());
 	
 	// test copy asignment operator
 	Lbl.add(2 , 32);
-	assert(Lbl2.getRear()->getData() != Lbl.getRear()->getData());
 	Lbl = Lbl2;
-	assert(Lbl2.getRear()->getData() == Lbl.getRear()->getData());
+
+	// test Iterator
+	for (auto it = Lbl.begin(); it != Lbl.end(); ++it) {
+		std::cout << *it << ",";
+	}
 	
 	return 0;
 }

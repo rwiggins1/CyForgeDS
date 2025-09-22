@@ -10,7 +10,11 @@ class LLNode {
 	public:
 		LLNode(const T& value): data(value), next(nullptr){}
 
-		T getData() const {
+		T& getData() {
+			return data;
+		}
+
+		const T& getData() const {
 			return data;
 		}
 		
