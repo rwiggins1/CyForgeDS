@@ -67,6 +67,12 @@ int main(){
 	for (auto it = Lbl.begin(); it != Lbl.end(); ++it) {
 		std::cout << *it << ",";
 	}
+
+	// test push back
+	LinkBasedList<int> list1;
+	list1.push_back(12);
+	auto it2 = list1.begin();
+	assert(*it2 == 12);
 	
 	return 0;
 }

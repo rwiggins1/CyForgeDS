@@ -35,12 +35,7 @@ public:
 		bool operator==(const Iterator& other) const { return current == other.current; }
 		bool operator!=(const Iterator& other) const { return current != other.current; }
 
-		T& operator*() {
-			if (!current) {
-				throw std::runtime_error("Cannot dereference end iterator");
-			}
-			return current->getData(); 
-		} 
+		T& operator*() { return current->getData(); } 
 		T* operator->() { return &(current->getData()); }
 	};
 
@@ -199,6 +194,20 @@ public:
 		element_num--;
 	}
 
+	void push_back(const T& element) {
+		LLNode<T>* newNode = new LLNode<T>(element);
+		
+		if (isEmpty()) {
+			front = newNode;
+		}
+		else {
+			rear->setNext(newNode);
+		}
+
+		rear = newNode;
+		element_num++;
+	}
+
 	T get(size_t index) const {
 		LLNode<T>* node = front;
 		
@@ -246,6 +255,8 @@ public:
 		return element_num == 0;
 	}
 
+
+private:
 	LLNode<T>* getFront() const {
 		return front;
 	}
@@ -254,7 +265,6 @@ public:
 		return rear;
 	}
 
-private:
 	void clear(){
 		while(front) {
 			LLNode<T>* toDelete = front;
