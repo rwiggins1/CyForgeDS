@@ -194,6 +194,18 @@ public:
 		element_num--;
 	}
 
+	void push_front(const T& element) {
+		LLNode<T>* newNode = new LLNode<T>(element);
+
+		if (isEmpty()) {
+			rear = newNode;
+		}
+		newNode->setNext(front);
+
+		front = newNode;
+		element_num++;
+	}
+
 	void push_back(const T& element) {
 		LLNode<T>* newNode = new LLNode<T>(element);
 		
