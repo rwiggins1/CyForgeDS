@@ -2,8 +2,7 @@
 #include <cassert>
 #include <map>
 #include <string>
-#include "CyForgeDS/base/LLNode.h"
-#include "CyForgeDS/lists/LinkBasedList.h"
+#include "../../CyForgeDS/lists/LinkBasedList.h"
 #include <iostream>
 
 using namespace cyforge;
@@ -73,6 +72,11 @@ int main(){
 	list1.push_back(12);
 	auto it2 = list1.begin();
 	assert(*it2 == 12);
+
+	LinkBasedList<int> list3;
+	list3.push_front(11);
+	auto it3 = list3.begin();
+	assert(*it3 == 11);
 	
 	return 0;
 }
