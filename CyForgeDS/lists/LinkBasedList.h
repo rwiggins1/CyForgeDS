@@ -220,6 +220,12 @@ public:
 		element_num++;
 	}
 
+	void concat(const LinkBasedList<T>& other) {
+		for (auto it = other.begin(); it != other.end(); ++it) {
+			push_back(*it);
+		}
+	}
+
 	T get(size_t index) const {
 		LLNode<T>* node = front;
 		
