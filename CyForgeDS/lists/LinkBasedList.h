@@ -59,7 +59,7 @@ public:
 		LLNode<T>* sourceNode = sourceList.getFront();
 		
 		while(sourceNode != nullptr) {
-			add(element_num, sourceNode->getData());
+			push_back(sourceNode->getData());
 			sourceNode = sourceNode->getNext();
 		}
 	}
@@ -76,7 +76,7 @@ public:
 		LLNode<T>* sourceNode = sourceList.getFront();
 		
 		while(sourceNode != nullptr) {
-			add(element_num, sourceNode->getData());
+			push_back(sourceNode->getData());
 			sourceNode = sourceNode->getNext();
 		}
 
