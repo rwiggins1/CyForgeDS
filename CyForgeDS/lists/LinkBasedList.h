@@ -46,6 +46,13 @@ public:
 	Iterator end() {
 		return Iterator(nullptr);
 	}
+	Iterator begin() const {
+	    return Iterator(front);
+	}
+
+	Iterator end() const {
+	    return Iterator(nullptr);
+	}
 
 	LinkBasedList() : element_num(0), front(nullptr), rear(nullptr) {}
 

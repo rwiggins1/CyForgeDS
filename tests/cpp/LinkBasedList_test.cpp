@@ -65,7 +65,7 @@ int main(){
 	// test Iterator
 	for (auto it = Lbl.begin(); it != Lbl.end(); ++it) {
 		std::cout << *it << ",";
-	}
+	} std::cout << "\n";
 
 	// test push back
 	LinkBasedList<int> list1;
@@ -77,6 +77,15 @@ int main(){
 	list3.push_front(11);
 	auto it3 = list3.begin();
 	assert(*it3 == 11);
+	list3.push_back(17);
+
+
+	list1.concat(list3);
+
+	for (auto it = list1.begin(); it != list1.end(); ++it) {
+		std::cout << *it << ",";
+	}
+	
 	
 	return 0;
 }
