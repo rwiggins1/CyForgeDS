@@ -22,7 +22,7 @@ public:
 	private:
 		LLNode<T>* current;
 	public:
-		Iterator(LLNode<T>* node) : current(node) {}
+		Iterator(LLNode<T>* node) : current{node} {}
 
 		Iterator& operator++() {
 			current = current->getNext();
@@ -55,9 +55,9 @@ public:
 	    return Iterator(nullptr);
 	}
 
-	LinkBasedList() : element_num(0), front(nullptr), rear(nullptr) {}
+	LinkBasedList() : element_num{0}, front{nullptr}, rear{nullptr} {}
 
-	LinkBasedList(const std::initializer_list<T> init): element_num(0), front(nullptr), rear(nullptr) {
+	LinkBasedList(const std::initializer_list<T> init): element_num{0}, front{nullptr}, rear{nullptr} {
 		for (const auto& item : init) {
 			push_back(item);
 		}

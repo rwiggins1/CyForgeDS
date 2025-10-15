@@ -12,7 +12,7 @@ private:
 	size_t curr_size;
 	
 public:
-	ArrayList(): data(nullptr), capacity(0), curr_size(0) {}
+	ArrayList(): data{nullptr}, capacity{0}, curr_size{0} {}
 
 	~ArrayList(){}
 };
