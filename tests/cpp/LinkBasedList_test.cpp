@@ -85,7 +85,12 @@ int main(){
 	for (auto it = list1.begin(); it != list1.end(); ++it) {
 		std::cout << *it << ",";
 	}
-	
-	
+
+	LinkBasedList<int> initializerTest = {100, 101, 102, 103, 104, 105};
+	std::cout << "\n";
+	for (auto it = initializerTest.begin(); it != initializerTest.end(); ++it) {
+		std::cout << *it << ",";
+	}
+
 	return 0;
 }

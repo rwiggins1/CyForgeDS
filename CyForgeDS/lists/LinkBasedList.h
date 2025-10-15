@@ -2,6 +2,7 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <initializer_list>
 #include <iterator>
 #include <stdexcept>
 #include <string>
@@ -55,6 +56,12 @@ public:
 	}
 
 	LinkBasedList() : element_num(0), front(nullptr), rear(nullptr) {}
+
+	LinkBasedList(const std::initializer_list<T> init): element_num(0), front(nullptr), rear(nullptr) {
+		for (const auto& item : init) {
+			push_back(item);
+		}
+	}
 
 	LinkBasedList(const LinkBasedList<T>& sourceList):
 		element_num(0),
