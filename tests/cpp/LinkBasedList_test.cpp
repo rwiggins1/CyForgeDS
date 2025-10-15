@@ -92,5 +92,11 @@ int main(){
 		std::cout << *it << ",";
 	}
 
+	LinkBasedList<std::string> initTest2{"23", "1", "46421", "39"};
+	std::cout << "\n";
+	for (auto it = initTest2.begin(); it != initTest2.end(); ++it) {
+		std::cout << *it << ",";
+	}
+
 	return 0;
 }
