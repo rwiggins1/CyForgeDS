@@ -13,6 +13,8 @@ int main() {
 	assert(vector2[3] == -4);
 	assert(vector2.getSize() == 5);
 	assert(vector2.getCapacity() == 5);
+	assert(vector2[-1] == 5);
+	
 
 	ArrayList<int> vector3 = {};
 	assert(vector3.getSize() == 0);
@@ -24,6 +26,13 @@ int main() {
 	vector3.push_back(3);
 	assert(vector3.getSize() == 3);
 	assert(vector3.getCapacity() == 4);
+
+	vector3.reserve(40);
+	assert(vector3.getCapacity() == 40);
+	vector3.push_back(-22);
+
+	vector3[0] = 100;
+	assert(vector3[0] == 100);
 
 	return 0;
 }

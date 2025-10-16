@@ -3,6 +3,7 @@
 #include <cstddef>
 #include <exception>
 #include <initializer_list>
+#include <stdexcept>
 
 namespace cyforge {
 	
@@ -15,6 +16,10 @@ private:
 	
 public:
 	ArrayList(): data{nullptr}, capacity{0}, curr_size{0} {}
+
+	ArrayList(size_t size): data{nullptr}, capacity{size}, curr_size{0} {
+		data = new T[capacity];
+	}
 
 	ArrayList(const T& element): data{nullptr}, capacity{1}, curr_size{0} {
 		data = new T[capacity];
@@ -31,7 +36,17 @@ public:
 		}
 	}
 
-	T& operator[](size_t index) {
+	T& operator[](std::ptrdiff_t index) {
+		if (index < 0) {
+			std::ptrdiff_t index2 = curr_size + index;
+
+			if (index2 >= 0) {
+				return data[curr_size + index];
+			}
+			else {
+				throw std::out_of_range("Index out of bounds");
+			}
+		}
 		return data[index];
 	}
 
@@ -53,6 +68,13 @@ public:
 	size_t getSize(){
 		return curr_size;
 	}
+
+	void reserve(size_t newCapacity) {
+		if (newCapacity > capacity) {
+			resize(newCapacity);
+		}
+	}
+
 private:
 	void resize(size_t newCapacity) {
 		T* newData = new T[newCapacity];
