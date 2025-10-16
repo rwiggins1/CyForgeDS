@@ -1,8 +1,29 @@
+#include <cassert>
 #include "../../CyForgeDS/lists/ArrayList.h"
 
 using namespace cyforge;
 
 int main() {
-	ArrayList<int> vector;
+	ArrayList<int> vector(331);
+	assert(vector.getSize() == 1);
+	assert(vector.getCapacity() == 1);
+	assert(vector[0] == 331);
+
+	ArrayList<int> vector2 = {1,2,3,-4,5};
+	assert(vector2[3] == -4);
+	assert(vector2.getSize() == 5);
+	assert(vector2.getCapacity() == 5);
+
+	ArrayList<int> vector3 = {};
+	assert(vector3.getSize() == 0);
+	assert(vector3.getCapacity() == 0);
+	vector3.push_back(0);
+	assert(vector3.getSize() == 1);
+	assert(vector3.getCapacity() == 1);
+	vector3.push_back(3);
+	vector3.push_back(3);
+	assert(vector3.getSize() == 3);
+	assert(vector3.getCapacity() == 4);
+
 	return 0;
 }
