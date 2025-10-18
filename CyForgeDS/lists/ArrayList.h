@@ -36,12 +36,16 @@ public:
 		}
 	}
 
+	~ArrayList(){
+		delete[] data;
+	}
+	
 	T& operator[](std::ptrdiff_t index) {
 		if (index < 0) {
-			std::ptrdiff_t index2 = curr_size + index;
+			std::ptrdiff_t index2 = static_cast<std::ptrdiff_t>(curr_size) + index;
 
 			if (index2 >= 0) {
-				return data[curr_size + index];
+				return data[index2];
 			}
 			else {
 				throw std::out_of_range("Index out of bounds");
@@ -50,8 +54,18 @@ public:
 		return data[index];
 	}
 
-	~ArrayList(){
-		delete[] data;
+	const T& operator[](std::ptrdiff_t index) const {
+		if (index < 0) {
+			std::ptrdiff_t index2 = static_cast<std::ptrdiff_t>(curr_size) + index;
+
+			if (index2 >= 0) {
+				return data[index2];
+			}
+			else {
+				throw std::out_of_range("Index out of bounds");
+			}
+		}
+		return data[index];
 	}
 
 	void push_back(const T& element) {
@@ -61,12 +75,22 @@ public:
 		data[curr_size++] = element;
 	}
 
-	size_t getCapacity(){
+	void shrink_to_fit() {
+		if (curr_size < capacity) {
+			resize(curr_size);
+		}
+	}
+
+	size_t getCapacity() const {
 		return capacity;
 	}
 
-	size_t getSize(){
+	size_t getSize() const {
 		return curr_size;
+	}
+
+	bool isEmpty() const {
+		return curr_size == 0;
 	}
 
 	void reserve(size_t newCapacity) {

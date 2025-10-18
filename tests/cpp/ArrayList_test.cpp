@@ -17,9 +17,11 @@ int main() {
 	
 
 	ArrayList<int> vector3 = {};
+	assert(vector3.isEmpty() == true);
 	assert(vector3.getSize() == 0);
 	assert(vector3.getCapacity() == 0);
 	vector3.push_back(0);
+	assert(vector.isEmpty() == false);
 	assert(vector3.getSize() == 1);
 	assert(vector3.getCapacity() == 1);
 	vector3.push_back(3);
@@ -29,7 +31,10 @@ int main() {
 
 	vector3.reserve(40);
 	assert(vector3.getCapacity() == 40);
+	assert(vector3.getSize() == 3);
 	vector3.push_back(-22);
+	vector3.shrink_to_fit();
+	assert(vector3.getCapacity() == 4);
 
 	vector3[0] = 100;
 	assert(vector3[0] == 100);
