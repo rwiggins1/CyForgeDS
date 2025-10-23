@@ -10,24 +10,24 @@ class LLNode {
 	public:
 		LLNode(const T& value): data(value), next(nullptr){}
 
-		T& getData() {
+		T& getData() noexcept {
 			return data;
 		}
 
-		const T& getData() const {
+		const T& getData() const noexcept {
 			return data;
 		}
 		
-		LLNode* getNext() const {
+		LLNode* getNext() const noexcept {
 		return next;
 		}
 
-		void setData(T value) {
-		data = value;
+		void setData(T value) noexcept {
+			data = value;
 		}
 		
-		void setNext(LLNode* node) {
-		next = node;
+		void setNext(LLNode* node) noexcept {
+			next = node;
 		} 
 };
 }

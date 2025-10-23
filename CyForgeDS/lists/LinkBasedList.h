@@ -279,21 +279,21 @@ public:
 		return false;
 	}
 
-	size_t size() const {
+	size_t size() const noexcept {
 		return element_num;
 	}
 
-	bool isEmpty() const {
+	bool isEmpty() const noexcept {
 		return element_num == 0;
 	}
 
 
 private:
-	LLNode<T>* getFront() const {
+	LLNode<T>* getFront() const noexcept {
 		return front;
 	}
 
-	LLNode<T>* getRear() const {
+	LLNode<T>* getRear() const noexcept {
 		return rear;
 	}
 

@@ -81,15 +81,15 @@ public:
 		}
 	}
 
-	size_t getCapacity() const {
+	size_t getCapacity() const noexcept {
 		return capacity;
 	}
 
-	size_t getSize() const {
+	size_t getSize() const noexcept {
 		return curr_size;
 	}
 
-	bool isEmpty() const {
+	bool isEmpty() const noexcept {
 		return curr_size == 0;
 	}
 
