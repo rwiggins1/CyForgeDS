@@ -100,7 +100,7 @@ public:
 	~LinkBasedList() { clear(); }
 
 	T set(size_t index, const T& element) {
-		if (index < 0 || index >= element_num) {
+		if (index >= element_num) {
 			throw std::out_of_range("Index " + std::to_string(index) + 
 				       " is out of bounds for list of size " + 
 				       std::to_string(element_num));
@@ -128,7 +128,7 @@ public:
 	}
 
 	void add(size_t index, const T& element){
-		if (index < 0 || index > element_num) {
+		if (index > element_num) {
 			throw std::out_of_range("Index " + std::to_string(index) + 
 				       " is out of bounds for list of size " + 
 				       std::to_string(element_num));
@@ -166,7 +166,7 @@ public:
 		    throw std::out_of_range("Cannot remove from empty list");
 		}
 
-		if (index < 0 || index >= element_num) {
+		if (index >= element_num) {
 			throw std::out_of_range("Index " + std::to_string(index) + 
 				       " is out of bounds for list of size " + 
 				       std::to_string(element_num));
