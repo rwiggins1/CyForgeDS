@@ -75,6 +75,15 @@ public:
 		data[curr_size++] = element;
 	}
 
+	// push_back for rvalues/temporaries
+	void push_back(T&& element) {
+		if (curr_size >= capacity) {
+			resize((capacity == 0) ? 1 : capacity * 2);
+		}
+
+		data[curr_size++] = std::move(element);
+	}
+
 	void shrink_to_fit() {
 		if (curr_size < capacity) {
 			resize(curr_size);
