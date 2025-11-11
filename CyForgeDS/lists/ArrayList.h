@@ -4,6 +4,7 @@
 #include <exception>
 #include <initializer_list>
 #include <stdexcept>
+#include <utility>
 
 namespace cyforge {
 	
@@ -113,7 +114,7 @@ private:
 		T* newData = new T[newCapacity];
 
 		for(size_t i = 0; i < curr_size; i++) {
-			newData[i] = data[i];
+			newData[i] = std::move(data[i]);
 		}
 
 		delete[] data;
