@@ -78,6 +78,8 @@ public:
 		}
 	}
 
+	~LinkBasedList() { clear(); }
+	
 	LinkBasedList& operator=(const LinkBasedList<T>& sourceList) {
 		if (this == &sourceList) {
 			return *this;
@@ -96,8 +98,6 @@ public:
 
 		return *this;
 	}
-
-	~LinkBasedList() { clear(); }
 
 	T set(size_t index, const T& element) {
 		if (index >= element_num) {
